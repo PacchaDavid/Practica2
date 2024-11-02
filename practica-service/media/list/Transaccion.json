@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "familiaId": 1,
+    "usoGenerador": "Actividades Domésticas",
+    "generadorId": 1
+  },
+  {
+    "id": 2,
+    "familiaId": 1,
+    "usoGenerador": "Joder Mamá te he dicho que no me interrumpas mientras juego con mi bizcochito",
+    "generadorId": 3
+  }
+]

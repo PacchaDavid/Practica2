@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "apellidosRepresentantes": "Minga Soteldo",
+    "nroIntegrantes": 5,
+    "canton": "SARAGURO",
+    "ingresosMensuales": 2334.53,
+    "nivelSocioeconomico": "MEDIO"
+  },
+  {
+    "id": 3,
+    "apellidosRepresentantes": "Huachaca Arrigona",
+    "nroIntegrantes": 5,
+    "canton": "CELICA",
+    "ingresosMensuales": 2300.45,
+    "nivelSocioeconomico": "MEDIO"
+  },
+  {
+    "id": 4,
+    "apellidosRepresentantes": "Paccha Gallegos",
+    "nroIntegrantes": 2,
+    "canton": "LOJA",
+    "ingresosMensuales": 15.46,
+    "nivelSocioeconomico": "BAJO"
+  }
+]
