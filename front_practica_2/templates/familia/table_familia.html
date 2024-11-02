@@ -1,0 +1,60 @@
+{% extends 'familia/familia_base.html' %}
+{% block title %}Tabla de Familias{% endblock %}
+
+{% block content %}
+
+<div class="card">
+  <div class="card-header">
+      <h4 class="card-title">Familias Registradas</h4>
+  </div>
+    {% with messages = get_flashed_messages(with_categories=True)  %}
+      {% if messages %}
+        {% for message in messages %}
+          {% if message[0] == 'info' %}
+          <p class="card-subtitle" style="color:#11fc2d"> <i class="la la-check-circle-o"></i> {{ message[1] }}</p>
+          {% else %}     
+            <p class="card-subtitle" style="color: #fc1111;"> <i class="la la-remove"></i> {{ message[1] }}</p>
+          {% endif %}               
+        {% endfor %}         
+      {% endif %}
+    {% endwith %}
+  <div class="card-block">
+      <div class="card-body">
+        <a href="/familia/save">
+          <button type="button" class="btn btn-dark btn-min-width mr-1 mb-1">
+            <i class="la la-plus"></i>
+          </button>
+        </a>
+        
+        <table class="table">
+          <thead class="thead-dark">
+            <th>Nro</th>
+            <th>Familia</th>
+            <th>Nro Integrantes</th>
+            <th>Canton</th>
+            <th>Ingresos Mensuales</th>
+            <th>Nvl Socioeconomico</th>
+            <th>Acción</th>
+          </thead>
+          <tbody>
+            {% for i in numbers %}
+              <tr>
+                <td>{{i+1}}</td>
+                <td>{{familia[i].apellidosRepresentantes}}</td>
+                <td>{{familia[i].nroIntegrantes}}</td>
+                <td>{{familia[i].canton}}</td>
+                <td>${{familia[i].ingresosMensuales}}</td>
+                <td>{{familia[i].nivelSocioeconomico}}</td>
+                <td>
+                  <a href="{{ url_for('router_familia.update_familia',id=familia[i].id) }}"><i class="la la-pencil"></i></a>
+                  <a href="{{ url_for('router_familia.delete_familia',id=familia[i].id ) }}"><i class="la la-trash"></i></a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>      
+      </div>
+  </div>
+</div>
+  
+{% endblock %}

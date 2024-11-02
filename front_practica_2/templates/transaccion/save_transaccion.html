@@ -1,0 +1,51 @@
+{% extends 'transaccion/transaccion_base.html' %}
+{% block title %}Guardar transaccion{% endblock %}
+{% block extra_routes %}
+  <a href="#"> - </a><a href="/transaccion/save">Guardar</a>
+{% endblock %}
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <h4 class="card-title">GUARDAR TRANSACCION</h4>
+  </div>
+  <div class="card-block">
+    <div class="card-body">
+
+      <a href="/transaccion/table">
+        <button type="button" class="btn btn-icon btn-danger mr-1">
+          <i class="la la-arrow-left"></i> <strong>Volver</strong>
+        </button>
+      </a>
+
+      <form action="/transaccion/save/send" method="post">
+        
+        <h5 class="mt-2"><label for="familiaId">Familia</label></h5>
+        <fieldset class="form-group">
+            <select class="form-control" name="familiaId" id="familiaId" required>
+              {% for familia in context.familias %}
+                <option value="{{familia.id}}">{{familia.id}}. {{familia.apellidosRepresentantes}}</option>
+              {% endfor %}
+            </select>
+        </fieldset>
+        
+        <h5 class="mt-2"><label for="generadorId">Generador</label></h5>
+        <fieldset class="form-group">
+          <select class="form-control" name="generadorId" id="generadorId" required>
+            {% for generador in context.generadores %}
+              <option value="{{generador.id}}">{{generador.id}}. {{generador.modelo}}</option>
+            {% endfor %}
+          </select>
+        </fieldset>
+
+        <h5 class="mt-2"><label for="usoGenerador">Uso del Generador</label></h5>
+        <fieldset class="form-group">
+            <textarea class="form-control" name="usoGenerador" id="usoGenerador" required></textarea>
+        </fieldset>
+
+        <button type="submit" class="btn mb-1 btn-primary btn-lg btn-block">Guardar Transaccion</button>
+      </form>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

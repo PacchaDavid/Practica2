@@ -1,0 +1,56 @@
+{% extends 'generador/generador_base.html' %}
+{% block title %}Tabla de Generadoress{% endblock %}
+{% block content %}
+<div class="card">
+  <div class="card-header">
+      <h4 class="card-title">Generadores Registrados</h4>
+  </div>
+    {% with messages = get_flashed_messages(with_categories=True)  %}
+      {% if messages %}
+        {% for message in messages %}
+          {% if message[0] == 'info' %}
+          <p class="card-subtitle" style="color:#11fc2d"> <i class="la la-check-circle-o"></i> {{ message[1] }}</p>
+          {% else %}     
+            <p class="card-subtitle" style="color: #fc1111;"> <i class="la la-remove"></i> {{ message[1] }}</p>
+          {% endif %}               
+        {% endfor %}         
+      {% endif %}
+    {% endwith %}
+  <div class="card-block">
+      <div class="card-body">
+        <a href="/generador/save">
+          <button type="button" class="btn btn-dark btn-min-width mr-1 mb-1">
+            <i class="la la-plus"></i>
+          </button>
+        </a>
+        
+        <table class="table">
+          <thead class="thead-dark">
+            <th>Nro</th>
+            <th>Modelo</th>
+            <th>Precio</th>
+            <th>Consumo</th>
+            <th>Potencia</th>
+            <th>Acción</th>
+          </thead>
+          <tbody>
+            {% for generador in list %}
+              <tr>
+                <td>{{generador.id}}</td>
+                <td>{{generador.modelo}}</td>
+                <td>${{generador.precio}}</td>
+                <td>{{generador.consumo}} L</td>
+                <td>{{generador.potencia}} W</td>
+                <td>
+                  <a href="{{ url_for('router_generador.update_generador',id=generador.id) }}" ><i class="la la-pencil"></i></a>
+                  <a href="{{ url_for('router_generador.delete_generador',id=generador.id) }}" ><i class="la la-trash"></i></a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>      
+      </div>
+  </div>
+</div>
+
+{% endblock %}

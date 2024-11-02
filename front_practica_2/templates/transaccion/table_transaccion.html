@@ -1,0 +1,56 @@
+{% extends 'transaccion/transaccion_base.html' %}
+{% block title %}Tabla de transacciones{% endblock %}
+{% block content %}
+
+<div class="card">
+  <div class="card-header">
+      <h4 class="card-title">Transacciones Registradas</h4>
+  </div>
+    {% with messages = get_flashed_messages(with_categories=True)  %}
+      {% if messages %}
+        {% for message in messages %}
+          {% if message[0] == 'info' %}
+          <p class="card-subtitle" style="color:#11fc2d"> <i class="la la-check-circle-o"></i> {{ message[1] }}</p>
+          {% else %}     
+            <p class="card-subtitle" style="color: #fc1111;"> <i class="la la-remove"></i> {{ message[1] }}</p>
+          {% endif %}               
+        {% endfor %}         
+      {% endif %}
+    {% endwith %}
+  <div class="card-block">
+      <div class="card-body">
+        <a href="/transaccion/save">
+          <button type="button" class="btn btn-dark btn-min-width mr-1 mb-1">
+            <i class="la la-plus"></i>
+          </button>
+        </a>
+        
+        <table class="table">
+          <thead class="thead-dark">
+            <th>Nro</th>
+            <th>Familia</th>
+            <th>Generador</th>
+            <th>Uso del generador</th>
+            <th>Acción</th>
+          </thead>
+          <tbody>
+            {% for transaccion in list %}
+              <tr>
+                <td>{{transaccion.id}}</td>
+                <td>{{transaccion.familiaId}}</td>
+                <td>{{transaccion.generadorId}}</td>
+                <td>{{transaccion.usoGenerador}}</td>
+                <td>
+                  <a href="{{ url_for('router_transaccion.update_transaccion',id=transaccion.id) }}" ><i class="la la-pencil"></i></a>
+                  <a href="{{ url_for('router_transaccion.delete_transaccion',id=transaccion.id) }}" ><i class="la la-trash"></i></a>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>      
+      </div>
+  </div>
+</div>
+
+  
+{% endblock %}
