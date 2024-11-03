@@ -1,10 +1,10 @@
 [
   {
-    "id": 6,
-    "apellidosRepresentantes": "Gorrito",
-    "nroIntegrantes": 10,
-    "ingresosMensuales": 2300.45,
-    "canton": "MACARA",
-    "nivelSocioeconomico": "BAJO"
+    "id": 5,
+    "apellidosRepresentantes": "Paccha Gallegos",
+    "nroIntegrantes": 3,
+    "ingresosMensuales": 53455.0,
+    "canton": "LOJA",
+    "nivelSocioeconomico": "ALTO"
   }
 ]

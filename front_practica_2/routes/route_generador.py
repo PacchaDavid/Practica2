@@ -6,7 +6,11 @@ router_generador = Blueprint('router_generador',__name__)
 def table_generador():
     response = requests.post('http://localhost:8080/api/generador/all')
     generadores = response.json()['data']
-    return render_template('generador/table_generador.html',list=generadores)
+    i = 1
+    for generador in generadores:
+        generador['numero'] = i
+        i += 1 
+    return render_template('generador/table_generador.html',generadores=generadores)
 
 
 @router_generador.route('/generador/save')

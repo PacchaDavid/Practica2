@@ -34,12 +34,12 @@
             <th>Acción</th>
           </thead>
           <tbody>
-            {% for transaccion in list %}
+            {% for transaccion in transacciones %}
               <tr>
-                <td>{{transaccion.id}}</td>
-                <td>{{transaccion.familiaId}}</td>
-                <td>{{transaccion.generadorId}}</td>
-                <td>{{transaccion.usoGenerador}}</td>
+                <td>{{ transaccion.numero }}</td>
+                <td>{{ transaccion.apellidosFamilia }}</td>
+                <td>{{ transaccion.generadorModelo }}</td>
+                <td>{{ transaccion.usoGenerador}}</td>
                 <td>
                   <a href="{{ url_for('router_transaccion.update_transaccion',id=transaccion.id) }}" ><i class="la la-pencil"></i></a>
                   <a href="{{ url_for('router_transaccion.delete_transaccion',id=transaccion.id) }}" ><i class="la la-trash"></i></a>

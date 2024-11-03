@@ -3,7 +3,6 @@ package com.arreglos.rest;
 import java.util.HashMap;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
 //import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -12,21 +11,21 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import com.arreglos.controller.dao.services.FamiliaServices;
+import com.arreglos.controller.dao.services.TransaccionServices;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@Path("/familia")
-public class FamiliaApi {
+@Path("/transaccion")
+public class TransaccionApi {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/all")
-    public Response getAllFamilias() {
+    public Response getAllTransaccions() {
         HashMap<String,Object> responseMap = new HashMap<>();
-        FamiliaServices fs = new FamiliaServices();
+        TransaccionServices ts = new TransaccionServices();
         ObjectMapper om = new ObjectMapper();
         try {                
             responseMap.put("msg", "OK");
-            responseMap.put("data", fs.getAllFamilia());
+            responseMap.put("data", ts.getAllTransaccion());
             String jsonResponse = om.writeValueAsString(responseMap);
             return Response.ok(jsonResponse).build();
         } catch (Exception e) {
@@ -39,16 +38,16 @@ public class FamiliaApi {
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Path("/get")
-    public Response getFamiliaById(HashMap<String,String> map) {
+    @Path("/get/")
+    public Response getTransaccionById(HashMap<String,String> map) {
         HashMap<String,Object> responseMap = new HashMap<>();
-        FamiliaServices fs = new FamiliaServices();
+        TransaccionServices ts = new TransaccionServices();
         ObjectMapper om = new ObjectMapper();
         Integer id = Integer.valueOf(map.get("id"));
+
         try {                
             responseMap.put("msg", "OK");
-            responseMap.put("data", fs.getFamiliaById(id));
+            responseMap.put("data", ts.getTransaccionById(id));
             String jsonResponse = om.writeValueAsString(responseMap);
             return Response.ok(jsonResponse).build();
         } catch (Exception e) {
@@ -63,16 +62,16 @@ public class FamiliaApi {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/save")
-    public Response saveFamilia(String json) {
+    public Response saveTransaccion(String json) {
         HashMap<String,Object> responseMap = new HashMap<>();
-        FamiliaServices fs = new FamiliaServices(true);
+        TransaccionServices ts = new TransaccionServices(true);
         ObjectMapper om = new ObjectMapper();
         try {
-            fs.familiaFromJson(json);
-            if(!fs.isThereAllFields()) return Response.status(Status.BAD_REQUEST).build();
-            fs.save();
+            ts.transaccionFromJson(json);
+            if(!ts.isThereAllFields()) return Response.status(Status.BAD_REQUEST).build();
+            ts.save();
             responseMap.put("msg","OK");
-            responseMap.put("data", fs.getFamilia());
+            responseMap.put("data", ts.getTransaccion());
             String jsonResponse = om.writeValueAsString(responseMap);
             return Response.ok(jsonResponse).build();
         } catch (Exception e) {
@@ -87,15 +86,15 @@ public class FamiliaApi {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/delete")
-    public Response deleteFamilia(HashMap<String, String> json) {
-        FamiliaServices fs = new FamiliaServices();
+    public Response deleteTransaccion(HashMap<String, String> json) {
+        TransaccionServices ts = new TransaccionServices();
         HashMap<String,Object> responseMap = new HashMap<>();
         ObjectMapper om = new ObjectMapper();
         
         try {
             Integer id = Integer.valueOf(json.get("id"));   
             responseMap.put("msg","OK");
-            responseMap.put("data", fs.deleteFamilia(id)); //En esta línea se borra la familia
+            responseMap.put("data", ts.deleteTransaccion(id)); //En esta línea se borra la Transaccion
             String jsonResponse = om.writeValueAsString(responseMap);
             return Response.ok(jsonResponse).build();
         } catch (Exception e) {
@@ -112,20 +111,19 @@ public class FamiliaApi {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/update")
-    public Response updateFamilia(HashMap<String, String> json) {
-        FamiliaServices fs = new FamiliaServices();
+    public Response updateTransaccion(HashMap<String, String> json) {
+        TransaccionServices ts = new TransaccionServices();
         HashMap<String,Object> responseMap = new HashMap<>();
         ObjectMapper om = new ObjectMapper();
         
         try {
             Integer id = Integer.valueOf(json.get("id"));
             String jsonRequest = om.writeValueAsString(json);
-            fs.familiaFromJson(jsonRequest);
-            System.out.println(fs.familiaToJson());
-            if(!fs.isThereAllFields()) return Response.status(Status.BAD_REQUEST).build();
-            fs.updateFamiliaWithId(id);   
+            ts.transaccionFromJson(jsonRequest);
+            if(!ts.isThereAllFields()) return Response.status(Status.BAD_REQUEST).build();
+            ts.updateTransaccionWithId(id);   
             responseMap.put("msg","OK");
-            responseMap.put("data", fs.getFamilia()); 
+            responseMap.put("data", ts.getTransaccion()); 
             String jsonResponse = om.writeValueAsString(responseMap);
             return Response.ok(jsonResponse).build();
         } catch (Exception e) {
@@ -138,15 +136,5 @@ public class FamiliaApi {
         }
     }
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("/cantones_and_nivelesSE")
-    public Response enumerations() {
-        FamiliaServices fs = new FamiliaServices();
-        String jsonResponse = "{\"mgs\":\"ok\",";
-        jsonResponse += "\"niveles\":" + fs.nivelesSocioeconomicosJson() + ",";
-        jsonResponse += "\"cantones\":" + fs.cantonesJson() + "}";        
-        return Response.ok(jsonResponse).build();
-    }
 
 }

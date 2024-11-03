@@ -34,13 +34,13 @@
             <th>Acción</th>
           </thead>
           <tbody>
-            {% for generador in list %}
+            {% for generador in generadores %}
               <tr>
-                <td>{{generador.id}}</td>
-                <td>{{generador.modelo}}</td>
-                <td>${{generador.precio}}</td>
-                <td>{{generador.consumo}} L</td>
-                <td>{{generador.potencia}} W</td>
+                <td>{{ generador.numero }}</td>
+                <td>{{ generador.modelo }}</td>
+                <td>${{ generador.precio }}</td>
+                <td>{{ generador.consumo }} L</td>
+                <td>{{ generador.potencia }} W</td>
                 <td>
                   <a href="{{ url_for('router_generador.update_generador',id=generador.id) }}" ><i class="la la-pencil"></i></a>
                   <a href="{{ url_for('router_generador.delete_generador',id=generador.id) }}" ><i class="la la-trash"></i></a>

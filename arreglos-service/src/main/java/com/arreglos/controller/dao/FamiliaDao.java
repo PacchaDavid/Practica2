@@ -3,7 +3,9 @@ package com.arreglos.controller.dao;
 import java.lang.reflect.Array;
 
 import com.arreglos.controller.dao.implement.AdapterDao;
+import com.arreglos.controller.tda.models.Canton;
 import com.arreglos.controller.tda.models.Familia;
+import com.arreglos.controller.tda.models.NivelSocioeconomico;
 import com.google.gson.Gson;
 
 public class FamiliaDao extends AdapterDao<Familia> {
@@ -81,6 +83,7 @@ public class FamiliaDao extends AdapterDao<Familia> {
                 familias[i] = this.getFamilia();
             }
         }
+        saveFile(familias);
     }
 
     public Familia deleteFamilia(Integer id) throws Exception {
@@ -106,4 +109,31 @@ public class FamiliaDao extends AdapterDao<Familia> {
         persist(familia);
         return true;
     }
+
+    public String[] nivelesSocioeconomicos() {
+        NivelSocioeconomico[] niveles = NivelSocioeconomico.values();
+        String[] nivelesSocioeconomicos = new String[niveles.length];
+        for(int i = 0; i < niveles.length; i++) {
+            nivelesSocioeconomicos[i] = niveles[i].name();
+        }
+        return nivelesSocioeconomicos;
+    }
+
+    public String nivelesSocioeconomicosJson() {
+        return gson.toJson(nivelesSocioeconomicos());
+    }
+
+    public String[] cantones() {
+        Canton[] cantones = Canton.values();
+        String[] cantonesString = new String[cantones.length];
+        for(int i = 0; i < cantones.length; i++) {
+            cantonesString[i] = cantones[i].name();
+        }
+        return cantonesString;
+    }
+
+    public String cantontesJson() {
+        return gson.toJson(cantones());
+    }
+
 }

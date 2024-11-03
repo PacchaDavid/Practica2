@@ -62,4 +62,29 @@ public class FamiliaServices {
         return this.obj.deleteFamilia(id);
     }
 
+    public Boolean isThereAllFields() {
+        if(this.getFamilia().getApellidosRepresentantes() == null) return false;
+        if(this.getFamilia().getCanton() == null) return false;
+        if(this.getFamilia().getIngresosMensuales() == null) return false;
+        if(this.getFamilia().getNivelSocioeconomico() == null) return false;
+        if(this.getFamilia().getNroIntegrantes() == null) return false;
+        return true;
+    }
+
+    public String[] nivelesSocioeconomicos() {
+        return obj.nivelesSocioeconomicos();
+    }
+
+    public String nivelesSocioeconomicosJson() {
+        return obj.nivelesSocioeconomicosJson();
+    }
+
+    public String[] cantones() {
+        return obj.cantones();
+    }
+
+    public String cantonesJson() {
+        return obj.cantontesJson();
+    }
+
 }

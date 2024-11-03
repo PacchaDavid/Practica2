@@ -6,7 +6,15 @@ router_transaccion = Blueprint('router_transaccion',__name__)
 def table_transaccion():
     response = requests.post('http://localhost:8080/api/transaccion/all')
     transacciones = response.json()['data']
-    return render_template('transaccion/table_transaccion.html',list=transacciones)
+    i = 1
+    for transaccion in transacciones:
+        transaccion['numero'] = i
+        headers = {'Content-Type':'application/json'}
+        familia = requests.post('http://localhost:8080/api/familia/get',json={'id':transaccion['familiaId']},headers=headers).json()['data']
+        transaccion['apellidosFamilia'] = familia['apellidosRepresentantes']
+        generador = requests.post('http://localhost:8080/api/generador/get',json={'id':transaccion['generadorId']},headers=headers).json()['data']
+        transaccion['generadorModelo'] = generador['modelo']
+    return render_template('transaccion/table_transaccion.html',transacciones=transacciones)
 
 
 @router_transaccion.route('/transaccion/save')

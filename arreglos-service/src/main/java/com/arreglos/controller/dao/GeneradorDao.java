@@ -47,18 +47,6 @@ public class GeneradorDao extends AdapterDao<Generador> {
         return gson.toJson(this.getGenerador());
     }
 
-    /* public Boolean save() throws Exception {
-        Generador[] generadores = getArray();
-        if(generadores.length == 0) 
-            this.getGenerador().setId(1);
-        else {
-            Integer id = generadores[generadores.length-1].getId();
-            this.getGenerador().setId(id+1); 
-        }
-        persist(Generador);
-        return true;
-    } */
-
     public Generador getGeneradorById(Integer id) throws Exception {
         Generador[] generadores = getArray();
         for(int i = 0; i < generadores.length; i++) {
@@ -81,10 +69,11 @@ public class GeneradorDao extends AdapterDao<Generador> {
                 generadores[i] = this.getGenerador();
             }
         }
+        saveFile(generadores);
     }
 
     public Generador deleteGenerador(Integer id) throws Exception {
-        Generador Generador = getGeneradorById(id);
+        Generador generador = getGeneradorById(id);
         Generador[] generadores = getArray();
         Generador[] newgeneradores = (Generador[])Array.newInstance(Generador.class , generadores.length-1);
         int j=0;
@@ -95,7 +84,7 @@ public class GeneradorDao extends AdapterDao<Generador> {
             }
         }
         saveFile(newgeneradores);
-        return Generador;
+        return generador;
     }
 
     public Boolean save() throws Exception {

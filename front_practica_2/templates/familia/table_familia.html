@@ -37,17 +37,17 @@
             <th>Acción</th>
           </thead>
           <tbody>
-            {% for i in numbers %}
+            {% for familia in familias %}
               <tr>
-                <td>{{i+1}}</td>
-                <td>{{familia[i].apellidosRepresentantes}}</td>
-                <td>{{familia[i].nroIntegrantes}}</td>
-                <td>{{familia[i].canton}}</td>
-                <td>${{familia[i].ingresosMensuales}}</td>
-                <td>{{familia[i].nivelSocioeconomico}}</td>
+                <td>{{familia.numero}}</td>
+                <td>{{familia.apellidosRepresentantes}}</td>
+                <td>{{familia.nroIntegrantes}}</td>
+                <td>{{familia.canton}}</td>
+                <td>${{familia.ingresosMensuales}}</td>
+                <td>{{familia.nivelSocioeconomico}}</td>
                 <td>
-                  <a href="{{ url_for('router_familia.update_familia',id=familia[i].id) }}"><i class="la la-pencil"></i></a>
-                  <a href="{{ url_for('router_familia.delete_familia',id=familia[i].id ) }}"><i class="la la-trash"></i></a>
+                  <a href="{{ url_for('router_familia.update_familia',id=familia.id) }}"><i class="la la-pencil"></i></a>
+                  <a href="{{ url_for('router_familia.delete_familia',id=familia.id ) }}"><i class="la la-trash"></i></a>
                 </td>
               </tr>
             {% endfor %}

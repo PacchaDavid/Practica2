@@ -11,8 +11,11 @@ def home():
 def table_familia():
     response = requests.post('http://localhost:8080/api/familia/all')
     familias = response.json()['data']
-    numbers = range(0,familias.__len__())
-    return render_template('familia/table_familia.html',familia=familias,numbers=numbers)
+    j = 1
+    for familia in familias: 
+        familia['numero'] = j
+        j += 1
+    return render_template('familia/table_familia.html',familias=familias)
 
 
 @router_familia.route('/familia/save')
@@ -39,6 +42,8 @@ def save_familia_send():
 def update_familia(id):
     headers = {"Content-Type":"application/json"}
     response = requests.post(f'http://localhost:8080/api/familia/get',json={"id":id},headers=headers)
+    print("RESPUESTA!!")
+    print(response)
     familia = response.json()['data']
     response = requests.get('http://localhost:8080/api/familia/cantones_and_nivelesSE')
     enums = response.json()
