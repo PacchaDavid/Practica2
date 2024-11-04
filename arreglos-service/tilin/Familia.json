@@ -1,10 +1,26 @@
 [
   {
-    "id": 5,
-    "apellidosRepresentantes": "Paccha Gallegos",
-    "nroIntegrantes": 3,
-    "ingresosMensuales": 53455.0,
-    "canton": "LOJA",
+    "id": 1,
+    "apellidosRepresentantes": "Juárez Benigno",
+    "nroIntegrantes": 4,
+    "ingresosMensuales": 50000.0,
+    "canton": "CATAMAYO",
     "nivelSocioeconomico": "ALTO"
+  },
+  {
+    "id": 2,
+    "apellidosRepresentantes": "Medina Ojeda",
+    "nroIntegrantes": 7,
+    "ingresosMensuales": 3000.0,
+    "canton": "CALVAS",
+    "nivelSocioeconomico": "MEDIO"
+  },
+  {
+    "id": 3,
+    "apellidosRepresentantes": "Perez Rodriguez",
+    "nroIntegrantes": 3,
+    "ingresosMensuales": 500.4,
+    "canton": "SOZORANGA",
+    "nivelSocioeconomico": "BAJO"
   }
 ]
