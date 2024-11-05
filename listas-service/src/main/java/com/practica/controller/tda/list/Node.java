@@ -5,7 +5,6 @@ public class Node<E> {
     private E info;
     private Node<E> next;
 
-    // Constructores
     public Node() {}
     
     public Node(E info) {

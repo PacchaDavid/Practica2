@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "modelo": "23432",
+    "precio": 234234.0,
+    "consumo": 2343.0,
+    "potencia": 42465.0
+  },
+  {
+    "id": 2,
+    "modelo": "Z500-T",
+    "precio": 343423.0,
+    "consumo": 324234.0,
+    "potencia": 234234.0
+  }
+]

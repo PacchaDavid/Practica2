@@ -64,7 +64,7 @@ public class FamiliaDao extends AdapterDao<Familia> {
     public Familia getFamiliaById(Integer id) throws Exception {
         Familia[] familias = getArray();
         for(int i = 0; i < familias.length; i++) {
-            if(familias[i].getId() == id) {
+            if(familias[i].getId().equals(id)) {
                 return familias[i];
             }
         }
@@ -79,7 +79,7 @@ public class FamiliaDao extends AdapterDao<Familia> {
         getFamiliaById(id);//Para comprobar que sí exista la familia
         Familia[] familias = getArray();
         for(int i = 0; i < familias.length; i++) {
-            if(familias[i].getId() == id) {
+            if(familias[i].getId().equals(id)) {
                 familias[i] = this.getFamilia();
             }
         }

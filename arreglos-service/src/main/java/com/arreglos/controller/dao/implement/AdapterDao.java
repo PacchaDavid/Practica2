@@ -31,8 +31,8 @@ public class AdapterDao<T> implements InterfazDao<T> {
             return objects;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return null;
         }
-        return null;
     }
 
 

@@ -11,7 +11,7 @@
       {% if messages %}
         {% for message in messages %}
           {% if message[0] == 'info' %}
-          <p class="card-subtitle" style="color:#11fc2d"> <i class="la la-check-circle-o"></i> {{ message[1] }}</p>
+            <p class="card-subtitle" style="color:#11fc2d"> <i class="la la-check-circle-o"></i> {{ message[1] }}</p>
           {% else %}     
             <p class="card-subtitle" style="color: #fc1111;"> <i class="la la-remove"></i> {{ message[1] }}</p>
           {% endif %}               

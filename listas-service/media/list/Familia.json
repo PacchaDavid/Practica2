@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "apellidosRepresentantes": "Emilio Jara",
+    "nroIntegrantes": 3,
+    "canton": "ZAPOTILLO",
+    "ingresosMensuales": 3434342.0,
+    "nivelSocioeconomico": "ALTO"
+  },
+  {
+    "id": 2,
+    "apellidosRepresentantes": "Perez Rodriguez",
+    "nroIntegrantes": 4,
+    "canton": "CELICA",
+    "ingresosMensuales": 324.0,
+    "nivelSocioeconomico": "MEDIO"
+  }
+]

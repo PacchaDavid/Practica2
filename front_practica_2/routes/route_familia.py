@@ -27,7 +27,6 @@ def save_familia():
 def save_familia_send():
     headers = {'Content-Type':'application/json'}
     data = request.form.to_dict()
-    print(data)
     response = requests.post('http://localhost:8080/api/familia/save',json=data,headers=headers)
     if response.status_code == 200:
         flash('Datos de la familia guardados exitosamente!',category='info')
@@ -42,8 +41,6 @@ def save_familia_send():
 def update_familia(id):
     headers = {"Content-Type":"application/json"}
     response = requests.post(f'http://localhost:8080/api/familia/get',json={"id":id},headers=headers)
-    print("RESPUESTA!!")
-    print(response)
     familia = response.json()['data']
     response = requests.get('http://localhost:8080/api/familia/cantones_and_nivelesSE')
     enums = response.json()

@@ -14,6 +14,7 @@ def table_transaccion():
         transaccion['apellidosFamilia'] = familia['apellidosRepresentantes']
         generador = requests.post('http://localhost:8080/api/generador/get',json={'id':transaccion['generadorId']},headers=headers).json()['data']
         transaccion['generadorModelo'] = generador['modelo']
+        i += 1
     return render_template('transaccion/table_transaccion.html',transacciones=transacciones)
 
 

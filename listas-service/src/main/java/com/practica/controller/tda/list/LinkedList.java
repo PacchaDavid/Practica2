@@ -178,6 +178,7 @@ public class LinkedList<E> {
         return array;
     }
 
+    // sustituye al método toList() hecho en clase
     public void fromArrayToLinkedList(E[] array) {
         if(array == null) return;
         reset();

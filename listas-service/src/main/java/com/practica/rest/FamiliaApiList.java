@@ -129,6 +129,5 @@ public class FamiliaApiList {
         jsonResponse += "\"cantones\":" + fs.cantonesJson() + "}";        
         return Response.ok(jsonResponse).build();
     }
-
     
 }

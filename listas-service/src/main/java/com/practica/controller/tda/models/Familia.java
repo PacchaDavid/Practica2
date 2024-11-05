@@ -59,11 +59,5 @@ public class Familia {
         this.apellidosRepresentantes = apellidosRepresentantes;
     }
     
-    @Override
-    public String toString() {
-        return "numeroIntegrantes: " + String.valueOf(nroIntegrantes) + "\n" +
-        "canton: " + this.canton.name() + "\n" +
-        "ingresosMensuales: " + String.valueOf(ingresosMensuales) + "\n" +
-        "nivel SocioEconomico: " + this.nivelSocioeconomico.name();
-    }
+
 }
